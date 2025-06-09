@@ -66,16 +66,3 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.summary()
 
 
-The updated model code now includes the optional tweaks for side features you asked for:
-
-Each side input goes through a two-layer Dense pipeline with halving neuron counts.
-
-The final representation of each side input includes both original and processed features (via Concatenate).
-
-The fusion layer for side inputs has been made more expressive with Dense(14).
-
-The main input path still passes through a transformer encoder before dense layers.
-
-
-Let me know if you'd like an updated ASCII diagram or any further optimization suggestions.
-
