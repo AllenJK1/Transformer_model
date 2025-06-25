@@ -70,7 +70,7 @@ def prepare_live_sample(csv_path):
     return last_40
 
 def main():
-    model_path = "as.keras"        # Your model path
+    model_path = "USDDZDM.keras"        # Your model path
     live_csv_path = "live.csv"     # Your live OHLC file (update as needed)
 
     # Prepare sample for inference
