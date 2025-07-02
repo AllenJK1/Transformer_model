@@ -151,8 +151,7 @@ def run_prediction(model_prefix):
 
         # Make prediction
         predictions = model.predict([main_input_reshaped] + side_inputs_ordered)
-        print(f"
---- Prediction Result for {model_prefix} ---")
+        print(f"--- Prediction Result for {model_prefix} ---")
         print(f"Raw Prediction: {predictions[0][0]}")
         if predictions[0][0] > 0.5:
             print("Prediction: UP (1)")
