@@ -118,7 +118,7 @@ if __name__ == '__main__':
 
         # Load the trained model
         try:
-            model = tf.keras.models.load_model('CADCHFM.keras')
+            model = tf.keras.models.load_model('CADCHFM.h5')
             print("\n--- Model Loaded Successfully ---")
             model.summary()
         except Exception as e:
