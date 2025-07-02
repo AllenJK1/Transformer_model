@@ -126,15 +126,15 @@ def run_prediction(model_prefix):
         # Load the trained model
         model = None
         try:
-            model = tf.keras.models.load_model(model_filename_keras)
-            print(f"--- Model Loaded Successfully from {model_filename_keras} ---")
+            model = tf.keras.models.load_model(model_filename_h5)
+            print(f"--- Model Loaded Successfully from {model_filename_h5} ---")
         except (OSError, IOError):
             try:
-                model = tf.keras.models.load_model(model_filename_h5)
-                print(f"--- Model Loaded Successfully from {model_filename_h5} ---")
+                model = tf.keras.models.load_model(model_filename_keras)
+                print(f"--- Model Loaded Successfully from {model_filename_keras} ---")
             except (OSError, IOError) as e:
                 print(f"Error loading model for {model_prefix}: {e}")
-                print(f"Looked for {model_filename_keras} and {model_filename_h5}. Skipping this model.")
+                print(f"Looked for {model_filename_h5} and {model_filename_keras}. Skipping this model.")
                 return
 
         # Prepare inputs for the model
