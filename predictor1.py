@@ -102,8 +102,7 @@ def run_prediction(model_prefix):
     """
     Runs the prediction pipeline for a given model prefix.
     """
-    print(f"
-{'='*20} Running Prediction for {model_prefix} {'='*20}")
+    print(f"{'='*20} Running Prediction for {model_prefix} {'='*20}")
     model_filename_keras = f"{model_prefix}.keras"
     model_filename_h5 = f"{model_prefix}.h5"
     # Derive CSV name by removing the last character (e.g., 'M') from the prefix
