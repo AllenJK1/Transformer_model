@@ -125,16 +125,8 @@ def get_prediction(pair_name: str):
         # 5. Make Prediction
         predictions = model.predict([main_input_reshaped] + side_inputs_ordered)
         prediction_value = predictions[0][0]
-        
-        print(f"--- Prediction Result for {pair_name} ---")
-        print(f"Raw Prediction: {prediction_value}")
 
-        if prediction_value > 0.5:
-            print("Prediction: UP (1)")
-            return 1
-        else:
-            print("Prediction: DOWN (0)")
-            return 0
+        return prediction_value
 
     except (ValueError, IndexError) as e:
         print(f"An error occurred during data preparation: {e}")
