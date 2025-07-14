@@ -12,7 +12,7 @@ from tensorflow.keras.layers import (
 from Xfeatures import extract_features
 
 # -------------------------------
-# Data Processing
+# adn  Data Processing
 # -------------------------------
 
 def has_asterisks(window):
@@ -96,8 +96,11 @@ def build_model():
 
     for i, shape in enumerate(side_shapes):
         input_i = Input(shape=(shape,), name=f'side_input_{i+1}')
-        d1 = Dense(shape, activation='relu')(input_i)
-        d2 = Dense(max(1, shape // 2), activation='relu')(d1)
+        # Expand to a size proportional to the input shape
+        d1 = Dense(shape * 4, activation='relu')(input_i)
+        # Then, compress to a second layer, also proportional
+        d2 = Dense(shape * 2, activation='relu')(d1)
+        # Combine original inputs with the learned representation
         d_combined = Concatenate()([input_i, d2])
         side_inputs.append(input_i)
         side_processed.append(d_combined)
@@ -128,8 +131,8 @@ def build_model():
 
 def main():
     # Load and label data
-    samples_0 = extract_all_structured_samples("CADCHFI.csv")  # label 0
-    samples_1 = extract_all_structured_samples("CADCHFF.csv")  # label 1
+    samples_0 = extract_all_structured_samples("/content/drive/MyDrive/F/CADCHFI.csv")  # label 0
+    samples_1 = extract_all_structured_samples("/content/drive/MyDrive/F/CADCHFF.csv")  # label 1
 
     all_samples = samples_0 + samples_1
     y_labels = np.array([0] * len(samples_0) + [1] * len(samples_1), dtype=np.float32)
@@ -156,7 +159,7 @@ def main():
     )
 
     # Optional: Save model
-    model.save("binary_classifier_model.h5")
+    model.save("CADCHFB1.h5")
     print("✅ Training complete and model saved.")
 
 if __name__ == "__main__":
